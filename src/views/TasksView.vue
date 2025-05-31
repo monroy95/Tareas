@@ -121,10 +121,10 @@
                 <span>{{ formatDate(task.dueDate) }}</span>
               </div>
               <div class="assigned-user">
-                <img
+                <UserAvatar
                   :src="getAssignedUser(task.assignedTo)?.avatar"
-                  :alt="getAssignedUser(task.assignedTo)?.name"
-                  class="user-avatar"
+                  :name="getAssignedUser(task.assignedTo)?.name"
+                  size="small"
                 />
               </div>
             </div>
@@ -204,6 +204,7 @@ import { useAuthStore } from "@/stores/auth";
 import { format, isAfter } from "date-fns";
 import { es } from "date-fns/locale";
 import CreateTaskModal from "@/components/CreateTaskModal.vue";
+import UserAvatar from "@/components/UserAvatar.vue";
 import {
   Plus,
   Search,
@@ -705,12 +706,7 @@ onMounted(() => {
       }
 
       .assigned-user {
-        .user-avatar {
-          width: 1.5rem;
-          height: 1.5rem;
-          border-radius: 50%;
-          object-fit: cover;
-        }
+        // Estilos del contenedor si son necesarios
       }
     }
   }

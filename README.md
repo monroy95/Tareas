@@ -1,292 +1,271 @@
-# 📋 Aplicación de Gestión de Incidencias
+# 📋 Sistema de Gestión de Incidencias
 
-Una aplicación web moderna y responsive para la gestión de incidencias y tareas diarias, desarrollada con Vue 3 y diseño mobile-first.
+Una aplicación web moderna y responsive para la gestión de tareas e incidencias, desarrollada con Vue 3, que permite crear, administrar y dar seguimiento a tareas diarias con un sistema de autenticación simulado.
 
-## ✨ Características
+## ✨ Características Principales
 
 ### 🔐 Sistema de Autenticación
-- Login simulado con usuarios de prueba
-- Persistencia de sesión con localStorage
-- Roles de usuario (Administrador y Usuario)
-- Interfaz de login moderna con preview de usuarios
+
+- Login simulado con credenciales hardcodeadas
+- 5 usuarios de prueba con diferentes roles
+- Persistencia de sesión en localStorage
+- Rutas protegidas con guards de navegación
 
 ### 📱 Diseño Responsive
-- **Mobile-first**: Optimizada para dispositivos móviles
-- **Responsive**: Se adapta a tablets y escritorio
-- **Navegación intuitiva**: Menú hamburguesa en móviles
-- **Touch-friendly**: Botones y elementos apropiados para touch
+
+- **Mobile-first**: Optimizado para dispositivos móviles
+- **Breakpoints**: 480px (móvil), 768px (tablet), 1024px (desktop)
+- **Navegación adaptativa**: Menú hamburguesa en móviles
+- **Grid responsive**: Tarjetas que se adaptan al tamaño de pantalla
 
 ### 📊 Dashboard Interactivo
-- **Estadísticas visuales**: Métricas de tareas en tiempo real
-- **Gráficos informativos**: Distribución por estado y prioridad
-- **Tareas recientes**: Vista rápida de la actividad
-- **Alertas de prioridad**: Destacado de tareas urgentes
 
-### 🎯 Gestión de Tareas
-- **CRUD completo**: Crear, leer, actualizar y eliminar tareas
-- **Estados personalizables**: Pendiente, En Progreso, Completada, Cancelada
-- **Prioridades**: Baja, Media, Alta con códigos de color
-- **Fechas de vencimiento**: Control de deadlines
-- **Asignación de usuarios**: Gestión de responsables
-- **Búsqueda y filtros**: Encontrar tareas rápidamente
+- Estadísticas visuales en tiempo real
+- Gráficos de distribución por estado
+- Tareas recientes y de alta prioridad
+- Métricas de productividad
 
-### 🔍 Vista Detallada
-- **Información completa**: Toda la información de la tarea
-- **Historial de cambios**: Timeline de progreso
-- **Acciones rápidas**: Cambio de estado directo
-- **Metadatos**: Fechas, asignaciones, prioridad
+### ✅ Gestión Completa de Tareas
 
-### 👤 Perfil de Usuario
-- **Información personal**: Datos del usuario
-- **Estadísticas personales**: Métricas de productividad
-- **Actividad reciente**: Historial de acciones
-- **Configuración**: Preferencias de notificaciones
+- **CRUD completo**: Crear, leer, actualizar y eliminar
+- **Estados**: Pendiente, En Progreso, Completada, Cancelada
+- **Prioridades**: Baja (verde), Media (amarillo), Alta (rojo)
+- **Asignación**: Sistema de usuarios con permisos
+- **Fechas**: Vencimiento con indicadores visuales
+- **Búsqueda**: Filtros en tiempo real por texto y estado
 
-## 🚀 Tecnologías Utilizadas
+### 🎨 Sistema de Avatares
 
-- **Vue 3** - Framework principal con Composition API
-- **Vue Router** - Navegación y rutas protegidas
-- **Pinia** - Estado global de la aplicación
-- **Vite** - Herramienta de desarrollo y build
-- **SCSS** - Preprocesador CSS con variables
-- **Lucide Vue** - Iconografía moderna
-- **date-fns** - Manipulación de fechas
-- **@vueuse/core** - Utilities para Vue
+- **Avatares SVG**: Generados dinámicamente con iniciales
+- **Colores únicos**: Cada usuario tiene un color distintivo
+- **Fallback automático**: Si falla la imagen, muestra iniciales
+- **Componente reutilizable**: `UserAvatar` con múltiples tamaños
+- **Archivos locales**: SVGs almacenados en `src/assets/avatars/`
 
-## 📦 Instalación
+### 🔒 Sistema de Permisos
+
+- **Visualización**: Solo tareas asignadas o creadas por el usuario
+- **Edición**: Creador y asignado pueden modificar
+- **Eliminación**: Solo el creador puede eliminar
+- **Estados**: Cualquier usuario autorizado puede cambiar estados
+
+## 🚀 Instalación y Configuración
 
 ### Prerrequisitos
-- Node.js 16+ 
+
+- Node.js 16+
 - npm o yarn
 
 ### Pasos de instalación
 
 1. **Clonar el repositorio**
-   ```bash
-   git clone <url-del-repositorio>
-   cd app_tareas
-   ```
+
+```bash
+git clone <url-del-repositorio>
+cd app_tareas
+```
 
 2. **Instalar dependencias**
-   ```bash
-   npm install
-   ```
 
-3. **Iniciar el servidor de desarrollo**
-   ```bash
-   npm run dev
-   ```
+```bash
+npm install
+```
 
-4. **Abrir en el navegador**
-   ```
-   http://localhost:3000
-   ```
+3. **Ejecutar en modo desarrollo**
+
+```bash
+npm run dev
+```
+
+4. **Construir para producción**
+
+```bash
+npm run build
+```
 
 ## 👥 Usuarios de Prueba
 
-La aplicación incluye usuarios hardcodeados para testing:
+| Usuario                             | Email                  | Contraseña | Rol   | Avatar                     |
+| ----------------------------------- | ---------------------- | ---------- | ----- | -------------------------- |
+| Administrador                       | admin@test.com         | admin123   | admin | Rojo con iniciales "AD"    |
+| Mario Joel Monroy Canizales         | mmonroyc4@miumg.edu.gt | user123    | user  | Azul con iniciales "MM"    |
+| Víctor Estuardo Florian Castellanos | hola@test.com          | hola123    | user  | Púrpura con iniciales "VF" |
+| Juan Isaias Chopen Par              | juan@test.com          | juanio123  | user  | Cyan con iniciales "JC"    |
+| Juan Miguel Ramirez Hernandez       | juanmiguel@test.com    | juan123    | user  | Rosa con iniciales "JR"    |
 
-### Administrador
-- **Email**: `admin@test.com`
-- **Contraseña**: `admin123`
-- **Permisos**: Acceso completo al sistema
-
-### Usuario Regular
-- **Email**: `usuario@test.com`
-- **Contraseña**: `user123`
-- **Permisos**: Gestión de tareas asignadas
-
-### Usuario María
-- **Email**: `maria@test.com`
-- **Contraseña**: `maria123`
-- **Permisos**: Usuario regular
-
-## 🎮 Guía de Uso
-
-### 1. Inicio de Sesión
-- Accede a la aplicación
-- Haz clic en cualquier usuario de prueba para autocompletar credenciales
-- O ingresa manualmente email y contraseña
-- Presiona "Iniciar Sesión"
-
-### 2. Dashboard
-- **Vista general**: Estadísticas principales en tarjetas
-- **Tareas recientes**: Lista de últimas tareas modificadas
-- **Crear tarea**: Botón "Nueva Tarea" en la parte superior
-- **Navegación**: Links rápidos a secciones principales
-
-### 3. Gestión de Tareas
-- **Lista de tareas**: Vista de todas las tareas con filtros
-- **Búsqueda**: Campo de búsqueda en tiempo real
-- **Filtros por estado**: Pestañas para filtrar por estado
-- **Crear tarea**: Modal con formulario completo
-- **Acciones rápidas**: Menú contextual en cada tarea
-- **Vista detallada**: Click en una tarea para ver detalles
-
-### 4. Filtros y Búsqueda
-- **Búsqueda por texto**: Busca en título y descripción
-- **Filtros por estado**: Todas, Pendientes, En Progreso, Completadas
-- **Ordenamiento**: Por fecha de creación (más recientes primero)
-
-### 5. Estados de Tarea
-- **Pendiente**: Tarea creada, esperando inicio
-- **En Progreso**: Trabajo activo en la tarea
-- **Completada**: Tarea finalizada exitosamente
-- **Cancelada**: Tarea cancelada o descartada
-
-### 6. Responsive Design
-- **Móvil**: Navegación mediante menú hamburguesa
-- **Tablet**: Layout adaptado a pantalla media
-- **Desktop**: Vista completa con sidebar
-
-## 🏗️ Estructura del Proyecto
+## 📁 Estructura del Proyecto
 
 ```
 src/
-├── components/          # Componentes reutilizables
+├── assets/
+│   └── avatars/          # Avatares SVG locales
+│       ├── admin.svg
+│       ├── user.svg
+│       ├── victor.svg
+│       ├── juan1.svg
+│       └── juan2.svg
+├── components/
 │   ├── CreateTaskModal.vue
-│   └── EditTaskModal.vue
-├── stores/             # Pinia stores
-│   ├── auth.js         # Autenticación
-│   └── tasks.js        # Gestión de tareas
-├── views/              # Páginas principales
+│   ├── EditTaskModal.vue
+│   └── UserAvatar.vue    # Componente de avatar reutilizable
+├── router/
+│   └── index.js          # Configuración de rutas
+├── stores/
+│   ├── auth.js           # Store de autenticación
+│   └── tasks.js          # Store de tareas
+├── styles/
+│   ├── variables.scss    # Variables SCSS
+│   └── main.scss         # Estilos globales
+├── views/
 │   ├── LoginView.vue
 │   ├── DashboardView.vue
 │   ├── TasksView.vue
 │   ├── TaskDetailView.vue
 │   └── ProfileView.vue
-├── router/             # Configuración de rutas
-│   └── index.js
-├── styles/             # Estilos globales
-│   ├── variables.scss
-│   └── main.scss
-├── App.vue             # Componente raíz
-└── main.js             # Punto de entrada
+├── App.vue               # Componente principal
+└── main.js               # Punto de entrada
 ```
 
-## 📱 Características Responsive
+## 🛠️ Tecnologías Utilizadas
 
-### Mobile (< 768px)
-- Menú hamburguesa colapsible
-- Tarjetas de tareas en columna única
-- Botones optimizados para touch
-- Formularios adaptados a pantalla pequeña
+### Frontend
 
-### Tablet (768px - 1024px)
-- Grid de 2 columnas para tarjetas
-- Navegación híbrida
-- Balance entre información y usabilidad
+- **Vue 3** - Framework principal con Composition API
+- **Vue Router** - Navegación y rutas protegidas
+- **Pinia** - Gestión de estado global
+- **Vite** - Build tool y servidor de desarrollo
 
-### Desktop (> 1024px)
-- Vista completa con todas las funcionalidades
-- Grid de múltiples columnas
-- Navegación siempre visible
-- Espaciado generoso
+### Estilos
 
-## 🎨 Sistema de Diseño
+- **SCSS** - Preprocesador CSS con variables
+- **CSS Grid & Flexbox** - Layout responsive
+- **Google Fonts (Inter)** - Tipografía moderna
 
-### Colores
-- **Primario**: #3b82f6 (Azul)
-- **Éxito**: #10b981 (Verde)
-- **Advertencia**: #f59e0b (Naranja)
-- **Error**: #ef4444 (Rojo)
-- **Info**: #06b6d4 (Cyan)
+### Iconografía y Assets
 
-### Tipografía
-- **Fuente**: Inter (Google Fonts)
-- **Pesos**: 300, 400, 500, 600, 700
-- **Escalas**: xs, sm, base, lg, xl, 2xl, 3xl
+- **Lucide Vue** - Iconos SVG optimizados
+- **Avatares SVG** - Generados dinámicamente
+- **date-fns** - Manipulación de fechas
 
-### Espaciado
-- **Sistema**: Múltiplos de 4px
-- **Variables**: xs(4px), sm(8px), md(16px), lg(24px), xl(32px), 2xl(48px)
+## 🎯 Guía de Uso
 
-## 🔧 Scripts Disponibles
+### 1. Acceso al Sistema
 
-```bash
-# Desarrollo
-npm run dev
+- Visita la aplicación en tu navegador
+- Usa cualquiera de los usuarios de prueba listados arriba
+- El sistema recordará tu sesión
 
-# Build para producción
-npm run build
+### 2. Dashboard
 
-# Preview del build
-npm run preview
+- **Estadísticas**: Visualiza el resumen de tus tareas
+- **Tareas recientes**: Acceso rápido a las últimas tareas
+- **Alta prioridad**: Tareas que requieren atención inmediata
 
-# Linting
-npm run lint
+### 3. Gestión de Tareas
 
-# Formateo de código
-npm run format
+- **Crear**: Botón "Nueva Tarea" en dashboard o lista
+- **Editar**: Click en tarea → botón "Editar" (si tienes permisos)
+- **Estados**: Cambia el estado desde la vista detalle
+- **Eliminar**: Solo disponible para el creador de la tarea
+
+### 4. Búsqueda y Filtros
+
+- **Búsqueda**: Escribe en la barra de búsqueda
+- **Filtros**: Usa las pestañas (Todas, Pendientes, En Progreso, Completadas)
+- **Combinación**: Puedes combinar búsqueda con filtros
+
+### 5. Perfil de Usuario
+
+- **Información personal**: Datos del usuario actual
+- **Estadísticas**: Métricas de productividad
+- **Actividad reciente**: Historial de acciones
+
+## 🎨 Sistema de Avatares
+
+### Componente UserAvatar
+
+```vue
+<UserAvatar
+  :src="user.avatar"
+  :name="user.name"
+  size="medium"
+  fallback-color="#3b82f6"
+/>
 ```
 
-## 🌟 Funcionalidades Destacadas
+### Tamaños disponibles
 
-### 1. Persistencia Local
-- Las tareas se guardan en localStorage
-- La sesión persiste entre recargas
-- Datos de ejemplo incluidos
+- `small`: 1.5rem (24px)
+- `medium`: 2rem (32px)
+- `large`: 3rem (48px)
+- `xlarge`: 5rem (80px)
 
-### 2. Validación de Formularios
-- Validación en tiempo real
-- Mensajes de error descriptivos
-- Límites de caracteres visuales
+### Características
 
-### 3. Estados de Carga
-- Indicadores visuales de carga
-- Simulación de delays de API
-- Estados de carga para mejor UX
+- **Fallback automático**: Si la imagen falla, muestra iniciales
+- **Colores únicos**: Cada usuario tiene un color distintivo
+- **SVG optimizado**: Archivos ligeros y escalables
+- **Responsive**: Se adapta a diferentes tamaños de pantalla
 
-### 4. Accesibilidad
-- Navegación por teclado
-- Labels descriptivos
-- Contraste de colores adecuado
-- Focus states visibles
+### Paleta de Colores de Avatares
 
-### 5. Performance
-- Lazy loading de componentes
-- Computed properties optimizadas
-- Debounce en búsquedas
+- 🔴 **Administrador**: Gradiente rojo (#dc2626 → #991b1b)
+- 🔵 **Mario Joel**: Gradiente azul (#3b82f6 → #1d4ed8)
+- 🟣 **Víctor Estuardo**: Gradiente púrpura (#8b5cf6 → #7c3aed)
+- 🔵 **Juan Isaias**: Gradiente cyan (#06b6d4 → #0891b2)
+- 🌸 **Juan Miguel**: Gradiente rosa (#ec4899 → #db2777)
 
-## 🚀 Futuras Mejoras
+## 🔧 Personalización
 
-### Funcionalidades Pendientes
+### Agregar nuevos usuarios
+
+1. Edita `src/stores/auth.js`
+2. Agrega el usuario al array `testUsers`
+3. Crea un avatar SVG en `src/assets/avatars/`
+4. Importa y asigna el avatar
+
+### Modificar colores
+
+1. Edita `src/styles/variables.scss`
+2. Cambia las variables de color
+3. Los avatares se actualizarán automáticamente
+
+### Agregar nuevos estados de tarea
+
+1. Modifica `taskStatuses` en `src/stores/tasks.js`
+2. Agrega los iconos correspondientes en los componentes
+3. Actualiza los estilos CSS si es necesario
+
+## 📱 Responsive Design
+
+### Breakpoints
+
+- **Móvil**: < 480px
+- **Tablet**: 480px - 768px
+- **Desktop**: 768px - 1024px
+- **Large**: > 1024px
+
+### Características responsive
+
+- Menú hamburguesa en móviles
+- Grid adaptativo para tarjetas
+- Navegación optimizada por dispositivo
+- Formularios que se adaptan al tamaño de pantalla
+
+## 🚀 Próximas Mejoras
+
 - [ ] Notificaciones push
 - [ ] Modo oscuro
-- [ ] Exportar tareas a PDF/Excel
-- [ ] Comentarios en tareas
-- [ ] Archivos adjuntos
+- [ ] Exportación de datos
 - [ ] Integración con API real
-- [ ] Tests unitarios y E2E
-- [ ] PWA (Progressive Web App)
-- [ ] Sincronización offline
-
-### Mejoras Técnicas
-- [ ] Autenticación JWT real
-- [ ] Base de datos persistente
-- [ ] API REST completa
-- [ ] Docker containerization
-- [ ] CI/CD pipeline
-- [ ] Monitoring y logging
-
-## 🤝 Contribución
-
-Las contribuciones son bienvenidas. Por favor:
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+- [ ] Sistema de comentarios en tareas
+- [ ] Adjuntar archivos a tareas
+- [ ] Calendario de vencimientos
 
 ## 📄 Licencia
 
 Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
-## 👨‍💻 Autor
-
-Desarrollado como demo de aplicación Vue 3 responsive para gestión de incidencias.
-
 ---
 
-¡Gracias por usar nuestra aplicación de gestión de incidencias! 🎉 
+**Desarrollado con ❤️ usando Vue 3 y tecnologías modernas**

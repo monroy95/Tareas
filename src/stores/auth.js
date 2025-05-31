@@ -1,9 +1,34 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 
+// Importar avatares SVG locales
+import adminAvatar from "@/assets/avatars/admin.svg";
+import userAvatar from "@/assets/avatars/user.svg";
+import victorAvatar from "@/assets/avatars/victor.svg";
+import juan1Avatar from "@/assets/avatars/juan1.svg";
+import juan2Avatar from "@/assets/avatars/juan2.svg";
+
 export const useAuthStore = defineStore("auth", () => {
   const user = ref(null);
   const isLoading = ref(false);
+
+  // Función para generar avatar SVG como fallback
+  const generateAvatarSVG = (name, backgroundColor = "#3b82f6") => {
+    const initials = name
+      .split(" ")
+      .map((word) => word.charAt(0))
+      .join("")
+      .toUpperCase()
+      .slice(0, 2);
+
+    return `data:image/svg+xml;base64,${btoa(`
+      <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="50" fill="${backgroundColor}"/>
+        <text x="50" y="50" font-family="Inter, sans-serif" font-size="32" font-weight="600" 
+              fill="white" text-anchor="middle" dominant-baseline="central">${initials}</text>
+      </svg>
+    `)}`;
+  };
 
   // Usuarios de prueba hardcodeados
   const testUsers = [
@@ -13,35 +38,39 @@ export const useAuthStore = defineStore("auth", () => {
       password: "admin123",
       name: "Administrador",
       role: "admin",
-      avatar:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+      avatar: adminAvatar, // Usar avatar SVG local
     },
     {
       id: 2,
-      email: "usuario@test.com",
+      email: "mmonroyc4@miumg.edu.gt",
       password: "user123",
-      name: "Usuario Regular",
+      name: "Mario Joel Monroy Canizales",
       role: "user",
-      avatar:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b3e5?w=100&h=100&fit=crop&crop=face",
+      avatar: userAvatar, // Usar avatar SVG local
     },
     {
       id: 3,
-      email: "maria@test.com",
-      password: "maria123",
-      name: "María García",
+      email: "hola@test.com",
+      password: "hola123",
+      name: "Víctor Estuardo Florian Castellanos",
       role: "user",
-      avatar:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+      avatar: victorAvatar, // Usar avatar SVG local
     },
     {
       id: 4,
-      email: "mario@test.com",
-      password: "mario123",
-      name: "Mario Monroy",
+      email: "juan@test.com",
+      password: "juanio123",
+      name: "Juan Isaias Chopen Par",
       role: "user",
-      avatar:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+      avatar: juan1Avatar, // Usar avatar SVG local
+    },
+    {
+      id: 5,
+      email: "juanmiguel@test.com", // Cambiar email para evitar duplicados
+      password: "juan123",
+      name: "Juan Miguel Ramirez Hernandez",
+      role: "user",
+      avatar: juan2Avatar, // Usar avatar SVG local
     },
   ];
 

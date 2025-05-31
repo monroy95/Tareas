@@ -110,10 +110,10 @@
               </div>
               <div class="detail-value">
                 <div class="user-info">
-                  <img
+                  <UserAvatar
                     :src="assignedUser?.avatar"
-                    :alt="assignedUser?.name"
-                    class="user-avatar"
+                    :name="assignedUser?.name"
+                    size="small"
                   />
                   <span>{{ assignedUser?.name }}</span>
                 </div>
@@ -127,10 +127,10 @@
               </div>
               <div class="detail-value">
                 <div class="user-info">
-                  <img
+                  <UserAvatar
                     :src="createdByUser?.avatar"
-                    :alt="createdByUser?.name"
-                    class="user-avatar"
+                    :name="createdByUser?.name"
+                    size="small"
                   />
                   <span>{{ createdByUser?.name }}</span>
                 </div>
@@ -235,6 +235,7 @@ import { useAuthStore } from "@/stores/auth";
 import { format, isAfter } from "date-fns";
 import { es } from "date-fns/locale";
 import EditTaskModal from "@/components/EditTaskModal.vue";
+import UserAvatar from "@/components/UserAvatar.vue";
 import {
   ArrowLeft,
   Edit,
@@ -699,13 +700,6 @@ onMounted(async () => {
       display: flex;
       align-items: center;
       gap: $spacing-sm;
-
-      .user-avatar {
-        width: 1.5rem;
-        height: 1.5rem;
-        border-radius: 50%;
-        object-fit: cover;
-      }
     }
   }
 }

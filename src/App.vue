@@ -35,17 +35,16 @@
             <!-- Perfil de usuario -->
             <div class="user-section">
               <div class="user-info">
-                <img
+                <UserAvatar
                   :src="authStore.user.avatar"
-                  :alt="authStore.user.name"
-                  class="user-avatar"
+                  :name="authStore.user.name"
+                  size="medium"
                 />
-                <span class="user-name hidden md:block">{{ authStore.user.name }}</span>
+                <span class="user-name hidden md:block">{{
+                  authStore.user.name
+                }}</span>
               </div>
-              <button
-                class="btn btn--outline btn--small"
-                @click="logout"
-              >
+              <button class="btn btn--outline btn--small" @click="logout">
                 <LogOut class="icon" />
                 <span class="hidden md:inline">Salir</span>
               </button>
@@ -98,34 +97,35 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useAuthStore } from '@/stores/auth'
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
+import UserAvatar from "@/components/UserAvatar.vue";
 import {
   Menu,
   ClipboardList,
   LayoutDashboard,
   CheckSquare,
   User,
-  LogOut
-} from 'lucide-vue-next'
+  LogOut,
+} from "lucide-vue-next";
 
-const router = useRouter()
-const authStore = useAuthStore()
-const showMobileMenu = ref(false)
+const router = useRouter();
+const authStore = useAuthStore();
+const showMobileMenu = ref(false);
 
 const toggleMobileMenu = () => {
-  showMobileMenu.value = !showMobileMenu.value
-}
+  showMobileMenu.value = !showMobileMenu.value;
+};
 
 const closeMobileMenu = () => {
-  showMobileMenu.value = false
-}
+  showMobileMenu.value = false;
+};
 
 const logout = () => {
-  authStore.logout()
-  router.push('/login')
-}
+  authStore.logout();
+  router.push("/login");
+};
 </script>
 
 <style lang="scss" scoped>
@@ -163,7 +163,7 @@ const logout = () => {
     border: none;
     cursor: pointer;
     border-radius: $border-radius;
-    
+
     &:hover {
       background: $gray-100;
     }
@@ -190,7 +190,7 @@ const logout = () => {
 
     @media (max-width: $mobile) {
       font-size: $font-size-base;
-      
+
       .icon {
         width: 1.25rem;
         height: 1.25rem;
@@ -243,13 +243,6 @@ const logout = () => {
     display: flex;
     align-items: center;
     gap: $spacing-sm;
-
-    .user-avatar {
-      width: 2rem;
-      height: 2rem;
-      border-radius: 50%;
-      object-fit: cover;
-    }
 
     .user-name {
       font-weight: 500;
@@ -310,4 +303,4 @@ const logout = () => {
   width: 1rem;
   height: 1rem;
 }
-</style> 
+</style>

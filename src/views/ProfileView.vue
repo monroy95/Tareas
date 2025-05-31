@@ -14,10 +14,10 @@
       <div class="profile-card">
         <div class="profile-header">
           <div class="avatar-section">
-            <img
+            <UserAvatar
               :src="authStore.user.avatar"
-              :alt="authStore.user.name"
-              class="user-avatar"
+              :name="authStore.user.name"
+              size="xlarge"
             />
             <div class="avatar-overlay">
               <Camera class="camera-icon" />
@@ -260,6 +260,7 @@ import { useAuthStore } from "@/stores/auth";
 import { useTasksStore } from "@/stores/tasks";
 import { format, formatDistanceToNow } from "date-fns";
 import { es } from "date-fns/locale";
+import UserAvatar from "@/components/UserAvatar.vue";
 import {
   Camera,
   Crown,
@@ -454,14 +455,6 @@ const getActivityIcon = (type) => {
     .avatar-section {
       position: relative;
       flex-shrink: 0;
-
-      .user-avatar {
-        width: 5rem;
-        height: 5rem;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 4px solid $gray-200;
-      }
 
       .avatar-overlay {
         position: absolute;
